@@ -1,6 +1,6 @@
 // lib
 import { Routes, Route } from "react-router-dom";
-import { type AppRoute } from "./zod/route.z";
+import { type AppRoute } from "./zod/config/schema/route.z";
 
 // layout
 import BaseLayout from "./layouts/Base";

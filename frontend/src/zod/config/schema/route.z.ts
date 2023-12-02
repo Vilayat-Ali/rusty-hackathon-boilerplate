@@ -1,7 +1,7 @@
 // lib
 import { z } from "zod";
 
-const routeZodSchema = z.object({
+export const routeZodSchema = z.object({
   title: z.string().min(1),
   description: z.string().optional(),
   keywords: z.array(z.string().min(1)).optional(),
@@ -10,4 +10,3 @@ const routeZodSchema = z.object({
 });
 
 export type AppRoute = z.infer<typeof routeZodSchema>;
-export default routeZodSchema;
