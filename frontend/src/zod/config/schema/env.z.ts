@@ -1,6 +1,5 @@
 // lib
-import { ZodError, z } from "zod";
-import consola from "consola";
+import { z } from "zod";
 
 // zod schema
 export const envZodSchema = z.object({
@@ -15,10 +14,6 @@ export const getValidatedEnvs = (): ENV | undefined => {
     const result = envZodSchema.parse(import.meta.env);
     return result as ENV;
   } catch (err: unknown) {
-    if (err instanceof ZodError) {
-      for (const issue in err.issues) {
-        consola.fatal(`ENV Validation Error: ${issue}`);
-      }
-    }
+    console.log(err);
   }
 };

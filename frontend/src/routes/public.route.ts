@@ -6,6 +6,9 @@ import Home from "../pages/public/Home";
 import Register from "../pages/account/Register";
 import Login from "../pages/account/Login";
 
+// NOTE:
+// First `AppRoute` Object is always routed to `/` in the app.
+// In Other words, first Object becomes landing page for the application routing system.  
 const PublicRoutes: AppRoute[] = [
     {
         title: 'Home',
@@ -15,15 +18,15 @@ const PublicRoutes: AppRoute[] = [
         component: Home,
     },
     {
-        title: '/account/register',
-        href: '',
+        title: 'Register',
+        href: '/account/register',
         description: '',
         keywords: [],
         component: Register,
     },
     {
-        title: '/account/login',
-        href: '',
+        title: 'Login',
+        href: '/account/login',
         description: '',
         keywords: [],
         component: Login,

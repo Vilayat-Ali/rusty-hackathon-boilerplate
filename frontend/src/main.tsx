@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // app component

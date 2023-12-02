@@ -5,30 +5,58 @@ import { type AppRoute } from "./zod/config/schema/route.z";
 // layout
 import BaseLayout from "./layouts/Base";
 
+// pages
+import FourZeroFour from "./pages/FourZeroFour";
+
+// type
+// import { type AppConfig } from "./zod/config";
+
 // config
 import config from "./config";
 
 const App = () => {
   return (
     <Routes>
+      {/* 404 */}
+      <Route path="*" element={<FourZeroFour />} />
+      {/* 404 */}
+
       {/* Public Routes */}
-      {config.routes.public.map((route: AppRoute) => (
-        <Route
-          path={route.href}
-          key={route.href}
-          element={
-            <>
-              <BaseLayout
-                title={route.title}
-                description={route.description}
-                keywords={route.keywords}
-              >
-                {route.component({})}
-              </BaseLayout>
-            </>
-          }
-        />
-      ))}
+      {config.routes.public.map((route: AppRoute, index: number) =>
+        index === 0 ? (
+          <Route
+            index
+            key={route.href}
+            element={
+              <>
+                <BaseLayout
+                  title={route.title}
+                  description={route.description}
+                  keywords={route.keywords}
+                >
+                  {route.component({})}
+                </BaseLayout>
+              </>
+            }
+          />
+        ) : (
+          <Route
+            path={route.href}
+            key={route.href}
+            element={
+              <>
+                <BaseLayout
+                  title={route.title}
+                  description={route.description}
+                  keywords={route.keywords}
+                >
+                  {route.component({})}
+                </BaseLayout>
+              </>
+            }
+          />
+        )
+      )}
       {/* Public Routes */}
 
       {/* User Routes */}
