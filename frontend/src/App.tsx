@@ -5,16 +5,14 @@ import { type AppRoute } from "./zod/config/schema/route.z";
 // layout
 import BaseLayout from "./layouts/Base";
 
-// routes
-import { routes as PublicRoutes } from "./routes/public.routes";
-import { routes as ProtectedRoutes } from "./routes/protected.routes";
-import { routes as AdminRoutes } from "./routes/admin.routes";
+// config
+import config from "./config";
 
 const App = () => {
   return (
     <Routes>
       {/* Public Routes */}
-      {PublicRoutes.map((route: AppRoute) => (
+      {config.routes.public.map((route: AppRoute) => (
         <Route
           path={route.href}
           key={route.href}
@@ -33,8 +31,8 @@ const App = () => {
       ))}
       {/* Public Routes */}
 
-      {/* Protected Routes */}
-      {ProtectedRoutes.map((route: AppRoute) => (
+      {/* User Routes */}
+      {config.routes.user.map((route: AppRoute) => (
         <Route
           path={route.href}
           key={route.href}
@@ -51,10 +49,10 @@ const App = () => {
           }
         />
       ))}
-      {/* Protected Routes */}
+      {/* User Routes */}
 
       {/* Admin Routes */}
-      {AdminRoutes.map((route: AppRoute) => (
+      {config.routes.admin.map((route: AppRoute) => (
         <Route
           path={route.href}
           key={route.href}
