@@ -1,8 +1,8 @@
 // lib
-import { type AppRoute } from "../zod/config/schema/route.z";
+import { type configRoute } from "../zod/config/schema/route.z";
 
 // pages
 
-const UserRoutes: AppRoute[] = [];
+const UserRoutes: configRoute[] = [];
 
 export default UserRoutes;

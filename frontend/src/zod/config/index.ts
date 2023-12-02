@@ -3,7 +3,7 @@ import { z } from "zod";
 
 // zod schemas
 import { envZodSchema } from "./schema/env.z";
-import { routeZodSchema } from "./schema/route.z";
+import { lazyPageComponentRouteZodSchema } from "./schema/route.z";
 import { appAccessRole } from "./schema/user.z";
 
 export const appConfigZodSchema = z.object({
@@ -14,11 +14,11 @@ export const appConfigZodSchema = z.object({
   // app routes
   routes: z.object({
     // anyone can navigate to this page
-    public: z.array(routeZodSchema),
+    public: z.array(lazyPageComponentRouteZodSchema),
     // only users can navigate to this page
-    user: z.array(routeZodSchema),
+    user: z.array(lazyPageComponentRouteZodSchema),
     // only admins can navigate to this page
-    admin: z.array(routeZodSchema),
+    admin: z.array(lazyPageComponentRouteZodSchema),
   }),
 });
 

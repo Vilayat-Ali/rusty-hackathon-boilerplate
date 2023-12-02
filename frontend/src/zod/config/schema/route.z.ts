@@ -1,7 +1,15 @@
 // lib
 import { z } from "zod";
 
-export const routeZodSchema = z.object({
+export const configRouteZodSchema = z.object({
+  title: z.string().min(1),
+  description: z.string().optional(),
+  keywords: z.array(z.string().min(1)).optional(),
+  href: z.string().min(1),
+  componentPath: z.string().min(1),
+});
+
+export const lazyPageComponentRouteZodSchema = z.object({
   title: z.string().min(1),
   description: z.string().optional(),
   keywords: z.array(z.string().min(1)).optional(),
@@ -9,4 +17,5 @@ export const routeZodSchema = z.object({
   component: z.any(),
 });
 
-export type AppRoute = z.infer<typeof routeZodSchema>;
+export type configRoute = z.infer<typeof configRouteZodSchema>;
+export type LazyLoadingRoute = z.infer<typeof lazyPageComponentRouteZodSchema>;

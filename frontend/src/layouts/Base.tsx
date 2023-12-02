@@ -2,14 +2,14 @@
 import Helmet from "react-helmet";
 import { useEffect, type ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
-import { AppRoute } from "../zod/config/schema/route.z";
+import { LazyLoadingRoute } from "../zod/config/schema/route.z";
 
 export enum AUTH_LEVEL {
   ADMIN_ONLY = "ADMIN",
   USER_ONLY = "USER",
 }
 
-interface Props extends AppRoute {
+interface Props extends LazyLoadingRoute {
   allow?: AUTH_LEVEL;
   children: ReactNode;
 }
