@@ -11,7 +11,7 @@ const baseUserSchema = z.object({
 });
 
 // REGISTER USER SCHEMA
-const userRegisterZodSchema = baseUserSchema
+export const userRegisterZodSchema = baseUserSchema
   .extend({
     password: z.string().min(8),
     confirmPassword: z.string().min(8),
@@ -29,20 +29,28 @@ const userRegisterZodSchema = baseUserSchema
   });
 
 // LOGIN USER SCHEMA
-const userLoginZodSchema = z.object({
+export const userLoginZodSchema = z.object({
   email: z.string().email().min(1),
   password: z.string().min(8),
 });
 
 // DB Schema
-const userDBZodSchema = baseUserSchema.extend({
+export const userDBZodSchema = baseUserSchema.extend({
   role: z.enum(["USER", "ADMIN"]).default("USER"),
   password: z.string().min(8),
+});
+
+// REDUX STORE USER SCHEMA
+export const reduxUserZodSchema = baseUserSchema.extend({
+  role: z.enum(["USER", "ADMIN", ""]),
+  isAuthenticated: z.boolean().default(false),
+  token: z.string(),
 });
 
 export type userRegister = z.infer<typeof userRegisterZodSchema>;
 export type userLogin = z.infer<typeof userLoginZodSchema>;
 export type User = z.infer<typeof userDBZodSchema>;
+export type reduxUserState = z.infer<typeof reduxUserZodSchema>;
 
 const zodSchemas = {
   userRegisterZodSchema,

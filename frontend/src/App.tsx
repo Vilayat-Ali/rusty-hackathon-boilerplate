@@ -8,9 +8,6 @@ import BaseLayout from "./layouts/Base";
 // pages
 import FourZeroFour from "./pages/FourZeroFour";
 
-// type
-// import { type AppConfig } from "./zod/config";
-
 // config
 import config from "./config";
 
