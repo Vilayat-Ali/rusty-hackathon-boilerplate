@@ -3,7 +3,7 @@ use axum::{
     routing::{get, post},
     Json, Router,
 };
-use server::env::provide_envs;
+use server::{env::provide_envs, routes::BaseAPI};
 use tracing::Level;
 
 #[tokio::main]
@@ -17,7 +17,7 @@ async fn main() {
         .init();
 
     // router
-    let app: Router = Router::new();
+    let app: Router = Router::new().nest("/api", BaseAPI::set_routing());
 
     let listener = tokio::net::TcpListener::bind(format!("0.0.0.0:{}", envs.port))
         .await
